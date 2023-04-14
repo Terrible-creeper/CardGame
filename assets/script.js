@@ -38,12 +38,12 @@ function flipCard() {
         flippedCards.push(this);
         if (flippedCards.length == 2) {
             if (flippedCards[0].id == flippedCards[1].id) {
-                setTimeout(() => {flippedCards.forEach(card => card.classList.add('fliped'));flippedCards.forEach(card => card.classList.remove('flip'));flippedCards = [];}, 1000);
+                setTimeout(() => {flippedCards.forEach(card => card.classList.add('fliped'));flippedCards.forEach(card => card.classList.remove('flip'));flippedCards = [];}, 600);
             } else {
-                setTimeout(() => {flippedCards.forEach(card => card.classList.remove('flip'));flippedCards.forEach(card => card.classList.add('fail'));}, 1000);
-                setTimeout(() => {flippedCards.forEach(card => card.classList.remove('fail'));flippedCards = [];}, 1200);
+                setTimeout(() => {flippedCards.forEach(card => card.classList.remove('flip'));flippedCards.forEach(card => card.classList.add('fail'));}, 400);
+                setTimeout(() => {flippedCards.forEach(card => card.classList.remove('fail'));flippedCards = [];}, 600);
             }
-            setTimeout(() => {if (document.querySelectorAll('.card').length == document.querySelectorAll('.fliped').length) endGame();}, 1100);
+            setTimeout(() => {if (document.querySelectorAll('.card').length == document.querySelectorAll('.fliped').length) endGame();}, 605);
         }
     }
 }
@@ -58,8 +58,8 @@ function showcards() {
     if (flippedCards.length > 0) return;
     document.getElementById('peek').style.pointerEvents = 'none';
     cards.forEach(card => card.classList.add('flip'));
-    setTimeout(() => document.getElementById('peek').style.pointerEvents = 'auto', 1500);
-    setTimeout(() => cards.forEach(card => card.classList.remove('flip')), 1000);
+    setTimeout(() => cards.forEach(card => card.classList.remove('flip')), 600);
+    setTimeout(() => document.getElementById('peek').style.pointerEvents = 'auto', 700);
 }
 document.getElementById('peek').addEventListener('click', showcards);
 newGame();
