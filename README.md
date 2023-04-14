@@ -5,7 +5,7 @@ CardGame is a simple memory matching game written in HTML, CSS, and JavaScript. 
 To play the game, simply clone the repository and open the `index.html` file in your preferred browser.  
 
 ```bash
-git clone https://github.com/yourusername/CardGame.git
+git clone https://github.com/Terrible-creeper/CardGame.git
 cd CardGame
 open index.html
 ```
