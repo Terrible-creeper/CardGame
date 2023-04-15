@@ -21,7 +21,7 @@ open index.html
 Click the `PEEK` button to see all the cards for a brief period. The button will become unclickable for a short time after being clicked.
 
 ## Restart  
-Click the 完成配對點此重新開始 button to start a new game.
+Click the `完成配對點此重新開始` button to start a new game.
 
 ## Contributing  
 Feel free to contribute to this project by opening a pull request. If you have any issues, please report them in the issue tracker.
