@@ -1,36 +1,56 @@
-var card_list = [
-    ["<div class=\"card\" id=\"A\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480932590010469/pizza.gif\"></div>",0],
-    ["<div class=\"card\" id=\"B\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930945835038/chicken.gif\"></div>",0],
-    ["<div class=\"card\" id=\"C\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480929909842011/bee.gif\"></div>",0],
-    ["<div class=\"card\" id=\"D\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930606104637/cat.gif\"></div>",0],
-    ["<div class=\"card\" id=\"E\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480932183154828/duck.gif\"></div>",0],
-    ["<div class=\"card\" id=\"F\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480931293966396/cow.gif\"></div>",0],
-    ["<div class=\"card\" id=\"G\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480931780509756/dog.gif\"></div>",0],
-    ["<div class=\"card\" id=\"H\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480929540747387/turtle.gif\"></div>",0],
+let card_list = [
+    ["<div class=\"card\" id=\"A\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480932590010469/pizza.gif\"></div>",0],
+    ["<div class=\"card\" id=\"B\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930945835038/chicken.gif\"></div>",0],
+    ["<div class=\"card\" id=\"C\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480929909842011/bee.gif\"></div>",0],
+    ["<div class=\"card\" id=\"D\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930606104637/cat.gif\"></div>",0],
+    ["<div class=\"card\" id=\"E\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480932183154828/duck.gif\"></div>",0],
+    ["<div class=\"card\" id=\"F\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480931293966396/cow.gif\"></div>",0],
+    ["<div class=\"card\" id=\"G\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480931780509756/dog.gif\"></div>",0],
+    ["<div class=\"card\" id=\"H\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480929540747387/turtle.gif\"></div>",0],
 ]
-flippedCards = []
+let flippedCards = [];
+let gameStatus = 0;
+let difficulty = 'easy';
 
-function newGame() {
+function newGame(diff) {
+    difficulty = diff;
+    document.getElementById('level').innerHTML = difficulty.toUpperCase();
     let cardlist = Object.assign([[]],card_list);
-    cardlist.forEach(card => card[1] = 0);    
-    var newHtml = "<div class=\"cards\">";
+    cardlist.forEach(card => card[1] = 0);
+    let newHtml = "<div class=\"cards\">";
+    if (difficulty == 'easy') cardcount = 4;
+    if (difficulty == 'normal') cardcount = 6;
+    if (difficulty == 'hard') cardcount = 8;
+    cardlist = cardlist.slice(0,cardcount);
     console.log(cardlist);
     while (true) {
         let theCard = cardlist[Math.floor(Math.random() * cardlist.length)];
         newHtml+=theCard[0];
         theCard[1]++;
         if (theCard[1] == 2) cardlist.splice(cardlist.indexOf(theCard), 1);
-        console.log(newHtml);
         if (cardlist.length == 0) break;
     }
-    console.log(newHtml);
     newHtml+="</div>";
     document.querySelector('.game').innerHTML = newHtml;
     cards = document.querySelectorAll('.card');
     cards.forEach(card => card.addEventListener('click', flipCard));
+    document.getElementById('peek').addEventListener('click', showcards);
+    document.getElementById('difficulty').addEventListener('click', setDifficulty);
+    document.getElementById('timer').addEventListener('click', setTimer);
+}
+
+function setDifficulty() {
+    document.querySelector('.game').innerHTML = "<div class=\"difficulty-container\"><button class=\"difficulty\" id=\"easy\">EASY</button><button class=\"difficulty\" id=\"normal\">NORMAL</button></div><div class=\"difficulty-container\"><button class=\"difficulty\" id=\"hard\">HARD</button></div>";
+    document.querySelectorAll('.difficulty').forEach(difficulty => difficulty.addEventListener('click',() => newGame(difficulty.id)));
+}
+
+function setTimer() {
+    document.querySelector('.game').innerHTML = "<div class=\"timer-container\"><button class=\"timer\" id=\"30s\">30s</button><button class=\"timer\" id=\"60s\">60s</button></div><div class=\"timer-container\"><button class=\"timer\" id=\"90s\">90s</button></div>";
+    document.querySelectorAll('.timer').forEach(timer => timer.addEventListener('click',() => newGame(timer.id)));
 }
 
 function flipCard() {
+    if (gameStatus == 0) startGame();
     if (this.classList.contains('flip')) return;
     if (this.classList.contains('fliped')) return;
     if (flippedCards.length < 2) {
@@ -40,17 +60,26 @@ function flipCard() {
             if (flippedCards[0].id == flippedCards[1].id) {
                 setTimeout(() => {flippedCards.forEach(card => card.classList.add('fliped'));flippedCards.forEach(card => card.classList.remove('flip'));flippedCards = [];}, 600);
             } else {
-                setTimeout(() => {flippedCards.forEach(card => card.classList.remove('flip'));flippedCards.forEach(card => card.classList.add('fail'));}, 400);
-                setTimeout(() => {flippedCards.forEach(card => card.classList.remove('fail'));flippedCards = [];}, 600);
+                setTimeout(() => {flippedCards.forEach(card => card.classList.remove('flip'));flippedCards.forEach(card => card.classList.add('fail'));}, 600);
+                setTimeout(() => {flippedCards.forEach(card => card.classList.remove('fail'));flippedCards = [];}, 800);
             }
-            setTimeout(() => {if (document.querySelectorAll('.card').length == document.querySelectorAll('.fliped').length) endGame();}, 605);
+            setTimeout(() => {if (document.querySelectorAll('.card').length == document.querySelectorAll('.fliped').length) endGame();}, 805);
         }
     }
 }
 
+function startGame() {
+    gameStatus = 1;
+    document.getElementById('difficulty').style.pointerEvents = 'none';
+    document.getElementById('timer').style.pointerEvents = 'none';
+}
+
 function endGame() {
     document.querySelector('.game').innerHTML = "<button class=\"reset\">完成配對<br>點此重新開始</button>";
+    document.getElementById('difficulty').style.pointerEvents = 'auto';
+    document.getElementById('timer').style.pointerEvents = 'auto';
     document.querySelector('.reset').addEventListener('click', () => {newGame();});
+    gameStatus = 0;
 }
 
 function showcards() {
@@ -61,5 +90,5 @@ function showcards() {
     setTimeout(() => cards.forEach(card => card.classList.remove('flip')), 600);
     setTimeout(() => document.getElementById('peek').style.pointerEvents = 'auto', 700);
 }
-document.getElementById('peek').addEventListener('click', showcards);
-newGame();
+
+newGame(difficulty);
