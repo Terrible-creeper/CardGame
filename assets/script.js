@@ -1,12 +1,12 @@
 let card_list = [
-    ["<div class=\"card\" id=\"A\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480932590010469/pizza.gif\"></div>",0],
-    ["<div class=\"card\" id=\"B\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930945835038/chicken.gif\"></div>",0],
-    ["<div class=\"card\" id=\"C\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480929909842011/bee.gif\"></div>",0],
-    ["<div class=\"card\" id=\"D\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930606104637/cat.gif\"></div>",0],
-    ["<div class=\"card\" id=\"E\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480932183154828/duck.gif\"></div>",0],
-    ["<div class=\"card\" id=\"F\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480931293966396/cow.gif\"></div>",0],
-    ["<div class=\"card\" id=\"G\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480931780509756/dog.gif\"></div>",0],
-    ["<div class=\"card\" id=\"H\"><img class=\"back\" src=\"./assets/images/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480929540747387/turtle.gif\"></div>",0],
+    ["<div class=\"card\" id=\"A\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480932590010469/pizza.gif\"></div>",0],
+    ["<div class=\"card\" id=\"B\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930945835038/chicken.gif\"></div>",0],
+    ["<div class=\"card\" id=\"C\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480929909842011/bee.gif\"></div>",0],
+    ["<div class=\"card\" id=\"D\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930606104637/cat.gif\"></div>",0],
+    ["<div class=\"card\" id=\"E\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480932183154828/duck.gif\"></div>",0],
+    ["<div class=\"card\" id=\"F\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480931293966396/cow.gif\"></div>",0],
+    ["<div class=\"card\" id=\"G\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480931780509756/dog.gif\"></div>",0],
+    ["<div class=\"card\" id=\"H\"><img class=\"back\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480930266361927/box.gif\"><img class=\"front\" src=\"https://cdn.discordapp.com/attachments/292499303673626625/1096480929540747387/turtle.gif\"></div>",0],
 ]
 let flippedCards = [];
 let gameStatus = 0;
