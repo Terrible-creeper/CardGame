@@ -35,18 +35,12 @@ function newGame(diff) {
     cards.forEach(card => card.addEventListener('click', flipCard));
     document.getElementById('peek').addEventListener('click', showcards);
     document.getElementById('difficulty').addEventListener('click', setDifficulty);
-    document.getElementById('timer').addEventListener('click', setTimer);
 }
 
 function setDifficulty() {
     document.querySelector('.game').innerHTML = "<div class=\"difficulty-container\"><button class=\"difficulty\" id=\"easy\">EASY</button><button class=\"difficulty\" id=\"normal\">NORMAL</button></div><div class=\"difficulty-container\"><button class=\"difficulty\" id=\"hard\">HARD</button></div>";
     document.querySelectorAll('.difficulty').forEach(difficulty => difficulty.addEventListener('click',() => newGame(difficulty.id)));
 }
-
-// function setTimer() {
-//     document.querySelector('.game').innerHTML = "<div class=\"timer-container\"><button class=\"timer\" id=\"30s\">30s</button><button class=\"timer\" id=\"60s\">60s</button></div><div class=\"timer-container\"><button class=\"timer\" id=\"90s\">90s</button></div>";
-//     document.querySelectorAll('.timer').forEach(timer => timer.addEventListener('click',() => newGame(timer.id)));
-// }
 
 function flipCard() {
     if (gameStatus == 0) startGame();
@@ -70,14 +64,12 @@ function flipCard() {
 function startGame() {
     gameStatus = 1;
     document.getElementById('difficulty').style.pointerEvents = 'none';
-    document.getElementById('timer').style.pointerEvents = 'none';
 }
 
 function endGame() {
     document.querySelector('.game').innerHTML = "<button class=\"reset\">完成配對<br>點此重新開始</button>";
     document.getElementById('difficulty').style.pointerEvents = 'auto';
-    document.getElementById('timer').style.pointerEvents = 'auto';
-    document.querySelector('.reset').addEventListener('click', () => {newGame();});
+    document.querySelector('.reset').addEventListener('click', () => {newGame(difficulty);});
     gameStatus = 0;
 }
 

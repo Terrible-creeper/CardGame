@@ -117,7 +117,7 @@ body {
     justify-content: center;
     font-size: 24px;
     border: none;
-    background: #fff;
+    background: transparent;
     width: calc(90vw - 40px);
     height: 100%;
     width: 430px;
