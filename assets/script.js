@@ -22,7 +22,6 @@ function newGame(diff) {
     if (difficulty == 'normal') cardcount = 6;
     if (difficulty == 'hard') cardcount = 8;
     cardlist = cardlist.slice(0,cardcount);
-    console.log(cardlist);
     while (true) {
         let theCard = cardlist[Math.floor(Math.random() * cardlist.length)];
         newHtml+=theCard[0];
@@ -44,10 +43,10 @@ function setDifficulty() {
     document.querySelectorAll('.difficulty').forEach(difficulty => difficulty.addEventListener('click',() => newGame(difficulty.id)));
 }
 
-function setTimer() {
-    document.querySelector('.game').innerHTML = "<div class=\"timer-container\"><button class=\"timer\" id=\"30s\">30s</button><button class=\"timer\" id=\"60s\">60s</button></div><div class=\"timer-container\"><button class=\"timer\" id=\"90s\">90s</button></div>";
-    document.querySelectorAll('.timer').forEach(timer => timer.addEventListener('click',() => newGame(timer.id)));
-}
+// function setTimer() {
+//     document.querySelector('.game').innerHTML = "<div class=\"timer-container\"><button class=\"timer\" id=\"30s\">30s</button><button class=\"timer\" id=\"60s\">60s</button></div><div class=\"timer-container\"><button class=\"timer\" id=\"90s\">90s</button></div>";
+//     document.querySelectorAll('.timer').forEach(timer => timer.addEventListener('click',() => newGame(timer.id)));
+// }
 
 function flipCard() {
     if (gameStatus == 0) startGame();
